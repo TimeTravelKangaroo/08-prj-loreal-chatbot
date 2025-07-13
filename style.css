@@ -8,7 +8,7 @@
 /* —— body + fonts —— */
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  color: #000000;
   display: flex;
   justify-content: center;
 }
@@ -24,6 +24,12 @@ body {
   padding-top: 50px;
 }
 
+.logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
 .site-title {
   font-size: 22px;
   font-weight: 500;
@@ -36,28 +42,59 @@ body {
 }
 
 .chat-window {
-  height: 360px;
+  height: 400px;
   border: 1px solid #000;
   padding: 20px;
   font-size: 18px;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
+  background: #fbfbfb;
   white-space: pre-line;
 }
 
 /* messages */
 .msg {
+  display: flex;
   margin-bottom: 14px;
   line-height: 1.5;
 }
 
-.msg.user {
-  color: #000;
+/* Message bubble styling */
+.bubble {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-break: break-word;
+  font-size: 17px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
+/* User message bubble (right side) */
+.msg.user {
+  justify-content: flex-end;
+}
+.msg.user .bubble {
+  background: #f1f1f1;
+  color: #000;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-top-left-radius: 18px;
+}
+
+/* Assistant message bubble (left side) */
 .msg.ai {
-  color: #666666;
+  justify-content: flex-start;
+}
+.msg.ai .bubble {
+  background: #f1f1f1;
+    border: 2px solid #e3a535;
+  color: #333;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 18px;
+  border-top-right-radius: 18px;
+  border-top-left-radius: 18px;
 }
 
 /* input row */
@@ -80,6 +117,7 @@ body {
 }
 
 .chat-form button {
+  transition: 0.12s;
   font-size: 18px;
   background: #000;
   color: #fff;
@@ -91,7 +129,6 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
 .chat-form button .material-icons {
@@ -99,7 +136,7 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  border: 3px solid #e3a535;
 }
 
 .chat-form button:focus {
@@ -140,4 +177,17 @@ body {
 
 .site-footer a:hover {
   color: #666666;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .logo {
+    width: 150px;
+  }
+  .site-title {
+    font-size: 20px;
+  }
+  .chat-form input {
+    font-size: 16px;
+  }
 }
